@@ -1,0 +1,106 @@
+[
+    {
+        "id": "ebf7f167.48883",
+        "type": "debug",
+        "name": "device data",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 722,
+        "y": 320,
+        "z": "e539d6e5.0ef4e",
+        "wires": []
+    },
+    {
+        "id": "8f551c2d.0eb6b",
+        "type": "iot-app-in",
+        "name": "IoT Air App In",
+        "topic": "iot-2/type/+/id/+/evt/air/fmt/json",
+        "x": 474.5,
+        "y": 319,
+        "z": "e539d6e5.0ef4e",
+        "wires": [
+            [
+                "ebf7f167.48883"
+            ]
+        ]
+    },
+    {
+        "id": "43dfe1e1.fb172",
+        "type": "iot-app-in",
+        "name": "IoT Gyro App In",
+        "topic": "iot-2/type/+/id/+/evt/gyro/fmt/json",
+        "x": 478,
+        "y": 440,
+        "z": "e539d6e5.0ef4e",
+        "wires": [
+            [
+                "6277be82.a93768"
+            ]
+        ]
+    },
+    {
+        "id": "250cdb99.6c2dac",
+        "type": "iot-app-in",
+        "name": "IoT Accel App In",
+        "topic": "iot-2/type/+/id/+/evt/accel/fmt/json",
+        "x": 473,
+        "y": 560,
+        "z": "e539d6e5.0ef4e",
+        "wires": [
+            [
+                "ebf227cd.3aa9c8"
+            ]
+        ]
+    },
+    {
+        "id": "669049b4.1e47",
+        "type": "iot-app-in",
+        "name": "IoT Mag App In",
+        "topic": "iot-2/type/+/id/+/evt/mag/fmt/json",
+        "x": 483,
+        "y": 666,
+        "z": "e539d6e5.0ef4e",
+        "wires": [
+            [
+                "bdac90e8.ce441"
+            ]
+        ]
+    },
+    {
+        "id": "6277be82.a93768",
+        "type": "debug",
+        "name": "",
+        "active": true,
+        "console": false,
+        "complete": false,
+        "x": 724,
+        "y": 440,
+        "z": "e539d6e5.0ef4e",
+        "wires": []
+    },
+    {
+        "id": "ebf227cd.3aa9c8",
+        "type": "debug",
+        "name": "",
+        "active": true,
+        "console": false,
+        "complete": false,
+        "x": 732,
+        "y": 559,
+        "z": "e539d6e5.0ef4e",
+        "wires": []
+    },
+    {
+        "id": "bdac90e8.ce441",
+        "type": "debug",
+        "name": "",
+        "active": true,
+        "console": false,
+        "complete": false,
+        "x": 729,
+        "y": 666,
+        "z": "e539d6e5.0ef4e",
+        "wires": []
+    }
+]
