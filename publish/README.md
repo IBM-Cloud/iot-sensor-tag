@@ -3,7 +3,7 @@
 ## About
 This Node.js app allows you to connect to a [TI Sensor Tag](http://www.ti.com/tool/cc2541dk-sensor), retrieve 
 data from its sensors, and publish that data to the [IBM IoT Cloud](https://internetofthings.ibmcloud.com/#/).  
-You can run this application on a device like a Rasberry PI, Beaglebone Black,
+You can run this application on a device such as a Raspberry PI, Beaglebone Black,
 Mac, or PC, basically anything that supports the Node.js runtime and Bluetooth LE.
 
 ## Getting The Code
@@ -12,38 +12,37 @@ Just clone the repository.
     $ git clone git@github.com:IBM-Bluemix/iot-sensor-tag.git
 
 ## Prerequisites
-Since this Node app uses the IBM IoT Cloud you must signup for an account and register the device that will be 
-publishing the data.  To signup for the IBM IoT Cloud click [here](https://internetofthings.ibmcloud.com/#/).
+Since this Node app uses the IBM IoT Cloud you must [signup for an account](https://internetofthings.ibmcloud.com/#/) 
+and register the device that will be publishing the data.
 
-To register a device, do the following.
+After you register for the IoT Cloud beta you can follow the below steps to register a device.
 
 1.  Click the Devices tab
 2.  Click Add Device
 3.  In the Device Type dropdown select CC2541 Sensor Tag
-4.  In the Device ID field, enter the MAC address (without the colons) for the adapter publishing the data.  You can find the MAC address from
-OS network preferences
+4.  In the Device ID field, enter the MAC address (without the colons) for the adapter publishing the data.  You can find the MAC address from OS network preferences.
 5.  Click Continue
 
 After clicking Continue you will be brought to a page containing some properties for the device you registered.
-Copy the properties into a file called config.properties in the directory for the app (the publish directory).
-Make sure you do this before you leave this page, you will not be able to retrieve them after you leave the 
+Copy the properties into a file called config.properties in the publish directory of this repo.
+Make sure you do this before you leave this page, you will not be able to retrieve these properties after you leave the 
 page.
 
 ### If You Are Using OSX
-Newer Mac should support Bluetooth LE.  If you Mac supports Bluetooth 4.0 than chances are it supports Bluetooth
+Newer Macs should support Bluetooth LE.  If you Mac supports Bluetooth 4.0 then chances are it supports Bluetooth
 LE as well.  If you are using OSX you need to make one configuration change so your Mac can connect to the Sensor Tag.
 Run the following command in a terminal window and restart your machine.
 
     $ sudo nvram bluetoothHostControllerSwitchBehavior="never"
 
 ### If You Are Using Linux
-If you are using Linux than you need to install some software packages in order to connect to the Sensor Tag.
+If you are using Linux then you need to install some software packages in order to connect to the Sensor Tag.
 Run the following commands in a terminal window.
 
     $ apt-get install bluez
     $ apt-get install libbluetooth-dev
 
-### Bluetooth LE Adapter
+### Beaglebone Black
 This app has been tested on a [Beaglebone Black Rev C ](http://beagleboard.org/black) using 
 [this](http://plugable.com/products/usb-bt4le) Bluetooth LE USB adapter.
 
@@ -57,7 +56,7 @@ I have not tested this on Windows, feel free to open issues and submit pull requ
     $ node sensor-tag.js
 
 If there is no config.properties file present in the publish directory the app will fail to start.  Please 
-review the instructions in the Prerequisites section of the this README.
+review the instructions in the Prerequisites section of this README.
 
 When the app starts you will see the MAC address of the network adapter printed to the console and then a message
 saying "Make sure the Sensor Tag is on!".  After that you will see a message saying that the Node app has connected
@@ -79,9 +78,9 @@ something like this
     readHardwareRevision: N.A.
     readSoftwareRevision: N.A.
 
- The Node app will be publishing various topics containing data from the Sensor Tag sensors to the IoT Cloud.
+ The Node app will publish various topics containing data from the Sensor Tag sensors to the IoT Cloud.
  The table below describes the topics published, which data is being published to those topics, and how frequently
- the data is being published.  You can then subscribe to these topics from you own applications.
+ the data is being published.  You can then subscribe to these topics from your own applications.
 
 | Publish Topic              | Subscription Topic                   | Values                                    | Frequency       | 
 |----------------------------|--------------------------------------|-------------------------------------------|-----------------|
@@ -99,4 +98,3 @@ the instructions in [this](https://developer.ibm.com/iot/recipes/node-red-regist
 ## Dependencies
 For a list of 3rd party dependencies that are used see the package.json file
 in the root of the repository.
-

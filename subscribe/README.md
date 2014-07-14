@@ -1,27 +1,30 @@
 ## About
 This project contains different ways of visualizing and consuming the data published to 
-the IBM IoT Cloud from a TI Sensor Tag.  This project focused on connecting to the IoT Cloud
-subscribing to topics and then doing something with the data.  If you are looking for how to publish data to the IoT
-Cloud check out the project within the publish directory.
+the IBM IoT Cloud from a TI Sensor Tag.  In other words the code in this directory connects to the IoT Cloud
+subscribes to topics and then does something with the data.  If you are looking for how to publish data to the IoT
+Cloud check out the project within the 
+[publish directory](https://github.com/IBM-Bluemix/iot-sensor-tag/tree/master/publish).
 
 ## Server Code
-Most of the heard work of connecting to the IoT Cloud and subscribing to various topics happens in a Node.js
-app on the server.  This app connects to the IoT Cloud using MQTT and subscribed to the topics published
-from the Node.js app in the publish directory.  It then published the data from those topics to the client
-side browser code over several web sockets using the [sockjs library](https://github.com/sockjs/sockjs-node).
+Most of the hard work of connecting to the IoT Cloud and subscribing to various topics happens in a Node.js
+app on the server.  This app connects to the IoT Cloud using MQTT and subscribes to the topics published
+from the Node.js app in the publish directory.  In order to connect to the IoT Cloud the code needs an API Key
+and Auth Token from the IoT Cloud.  This can be provided via a properties file (for running locally) or via
+a service when the app is deployed to Bluemix.  After connecting to the IoT Cloud the app will publish the data 
+to the client side browser code over several web sockets using 
+the [sockjs Node.js library](https://github.com/sockjs/sockjs-node).
 
 ## Client Side Code
-The visualizations of the Sensor Tag data is different for each app, however how the different visualizations 
-get the data is the same.  As mentioned above the server side code is using websockets to push data in 
+As mentioned above the server side code is using websockets to push data in 
 real time down to the client side code.  The client side code uses the 
 [sockjs client library](https://github.com/sockjs/sockjs-client) to connect to the websockets and retrieve and 
 send data.  Before the client side code can receive data it needs to send the device id of the device that
-is sending data.
+is sending data so the code on the server knows which device to listen for data from.
 
 ## Running The Code
 
 ### Prerequisites
-Before you run this code you will need an API Key and auth token.  To get an API Key and auth token you need
+Before you run this code you will need an API Key and Auth Token.  To get an API Key and Auth Token you need
 to sign up for the IoT Cloud beta.  You should have already done this when setting up your device to publish
 the Sensor Tag data, however if you still need to register you can do so [here](https://internetofthings.ibmcloud.com/#/).
 After you have registered you will need to login and head to the dashboard.  On the dashboard click the 
@@ -37,8 +40,10 @@ and one for the Auth Token.  For example
     apikey=myapikey
     apitoken=myapitoken
 
-After you have added the config.properties file you can start the application server.
-
+After you have added the config.properties file run the following commands in a terminal window from the subscribe
+directory.
+    
+    $ npm install
     $ node app.js
 
 Open your favorite browser and go to [http://localhost:9999](http://localhost:9999).
@@ -63,5 +68,3 @@ you to connect to multiple devices from the same deployment.
 ## Dependencies
 For a list of 3rd party dependencies that are used see the package.json file
 in the root of the repository.
-
-
