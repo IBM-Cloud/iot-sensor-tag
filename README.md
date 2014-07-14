@@ -14,8 +14,8 @@ Sensor Tag buttons.
 * An application which visualizes the temperature, accelerometer, gyroscope, and magnetometer
 data from the Sesnor Tag.
 
-The [node-red directory]() contains an exported flow which you can import into your Node-RED instance
-of Bluemix to see the data being published from the Sensor Tag.
+The [node-red directory](https://github.com/IBM-Bluemix/iot-sensor-tag/tree/master/node-red) contains an exported flow 
+which you can import into your Node-RED instance of Bluemix to see the data being published from the Sensor Tag.
 
 Here is a diagram that describes how the apps work with the IBM IoT Cloud and Bluemix.
 
