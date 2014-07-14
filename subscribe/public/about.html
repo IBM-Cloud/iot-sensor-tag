@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!--
+ * Copyright IBM Corp. 2014
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>IBM Bluemix And IoT Demo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet">
+    <style type="text/css">
+      .container {
+        width: 920px;
+      }
+    </style>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">IBM Bluemix And IoT Demo</a>
+        </div>
+        <div class="navbar-collapse collapse">
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+      <h1>About</h1>
+      <p>
+        The <a href="http://www.ti.com/tool/cc2541dk-sensor" target="_blank">Texas Instruments Sensor Tag</a> 
+        is meant to help developers begin working with Bluetooth Low Energy (LE)
+        devices.  Bluetooth LE allows devices to communicate without having to complete the pairing step which
+        is normally required when using Bluetooth.  Bluetooth LE is ideal for retrieving data from sensors that are showing up
+        in more and more devices in our homes and on our person.  While the Sensor Tag has some practical uses, it
+        is really meant to help developers learn how to build apps using these technologies.
+      </p>
+      <h2>The How</h2>
+      <p>
+        The demo apps included in this site are meant to show you have to leverage the data produced from the Sensor Tag.
+        However the first step in leveraging the data is retrieving the data from the Sensor Tage itself.  There are
+        various ways of doing this but they all involve using Bluetooth LE, so the first thing you need is a Bluetooth LE
+        enabled device that is connected to the internet.  This could be your computer, mobile phone, tablet, Raspberry PI, 
+        or Beaglebone Black.  Most newer computers, tablets, and mobile phones should be able to talk Bluetooth LE.  If you
+        are using a Raspberry PI or Beaglebone Black you will need a Bluetooth LE USB adapter.
+      </p>
+
+      <h2>Connect To The Sensor Tag</h2>
+      <h3>Beagle Bone Black</h3>
+      <p>
+        I chose to use a <href="http://beagleboard.org/black">Beaglebone Black Rev C</a> to connect to my Sensor Tag.
+        I was able to connect the Sensor Tag to the Beaglebone Black with <a href="http://plugable.com/products/usb-bt4le">this</a> 
+        Bluetooth LE USB adaptor.  Both are pretty cheap, the two combined cost $70.
+      </p>
+
+      <h3>Raspberry PI</h3>
+      <p>
+        If you want to use a Rasberry PI, there are plenty of 
+        <a href="http://mike.saunby.net/2013/04/raspberry-pi-and-ti-cc2541-sensortag.html">articles</a> out there describing 
+        how.  
+      </p>
+
+      <h3>Using Bluetooth LE</h3>
+      <p>
+        Before being able to connect the Sensor Tag to the Beaglebone you will need to install some software.  SSH
+        into the Beaglebone by running <b>ssh root@192.168.7.2</b> and run the following commands.
+        <pre>
+$ apt-get install bluez
+$ apt-get install libbluetooth-dev
+        </pre>
+      </p>
+
+      <h3>OS X</h3>
+      <p>
+        If you want to use OSX to connect to the Sensor Tag you need to run one command in a Terminal window.
+        <pre>
+$ sudo nvram bluetoothHostControllerSwitchBehavior="never"
+        </pre>
+        You will need to restart your Mac after running this command.
+      </p>
+      <h2>The Code</h2>
+      <p>
+        After you have your device, you need to connect to the Sensor Tag.  How you do this depends on the device you 
+        are using.  If you plan on using a mobile phone or tablet, TI has provided some sample code for iOS and Android
+        that should help you out.  If you are going to connect to the device from a computer, a light weight programming
+        language like Node.js is usually a good idea, especially if you are connecting to a Raspberry PI or BeagleBone Black.
+      </p>
+
+      <p>
+        After your device is able to access the data from the Sensor Tag you are probably going to want to publish the data somewhere
+        so your apps can access it.  Luckily there is a standard protocol for sharing data of this type.  It is called 
+        <a href="http://mqtt.org/">MQTT</a>.  MQTT is a lightweight, machine-to-machine connectivity protocol, and functions
+        much like other pub-sub protocols.  IBM has provided an MQTT server we can use as part of its 
+        <a href="https://internetofthings.ibmcloud.com/#/">Internet of Things Cloud (IoT)</a>.  
+        Connecting to it is easy using any MQTT library.  For details on how to connect to the IBM IoT cloud
+        you can follow these <a href="https://developer.ibm.com/iot/recipes/improvise-registered-devices/">instructions</a>.
+
+      <p>
+        In my case I chose to use Node.js on my Beaglebone Black.  There is a 
+        <a href="https://github.com/sandeepmistry/node-sensortag">Node.js library</a> that makes connecting to
+        and retrieving data from the Sensor Tag really easy.  There is also an 
+        <a href="https://github.com/adamvr/MQTT.js/">MQTT library</a> that we can use to connect to 
+        the IBM IoT Cloud.  The code to connect to the Sensort Tag and publish to the IoT cloud can be found in
+        this GitHub repo.  You can clone the repo by running the following command on your Beaglebone Black.
+
+        <pre>
+$  git clone 
+        </pre>
+
+        Before you run the code you will need to register the application in the IoT Cloud.  To do this you need to
+        register for the <a href="https://internetofthings.ibmcloud.com/#/">beta</a>.  After you sign up you can
+        register a device, all you need is the MAC address.  The result of registering the device will give you some
+        properties you will need to connect to the IoT cloud.  The properties will look something like this.
+
+        <pre>
+org=someorg
+type=atype
+id=macaddress
+auth-method=token
+auth-token=secrettoken
+        </pre>
+
+        The Sensor Tag code will read these properties from a properties file.  Create a new file called config.properties 
+        in the publish directory and copy the properties into the file and save it.
+      </p>
+      <p>
+        When you run this code, by running node sensor-tag.js, you will see the Mac address of the computer you are running
+        on printed to the console and then a message indicating the program is waiting for a connection from a 
+        Sensor Tag.  If you press the button on the side of your Sensor Tag to turn it on you should see the program indicate it has
+        found the Sensor Tag and print out some basic properties about it.  Once you see that, data should be published
+        to the IoT Cloud.  
+      </p>
+      <p>
+        To quickly see the data being published you can head over to Bluemix and create a Node-RED instance connected to the IoT
+        Cloud.  Instructions on how to do this can be found 
+        <a href="https://developer.ibm.com/iot/recipes/node-red-registered-application/">here</a>.  Once you have the Node-RED app up
+        and running should be able to see all the data coming from your Sensor Tag in the debug tab.
+      </p>
+      <p>
+        The Node-RED flow prints out all topics published from the MAC address, however if you look closely at the Node
+        code you will notice that we are actually publishing a bunch of different topics allowing applications to consume
+        only the data they want.  Below is a table describing the topics published and what topics you can subscribe to in
+        order to listen for specific data from the Sensor Tag.
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Publish Topic</th>
+              <th>Subscription Topic</th>
+              <th>Values</th>
+              <th>Frequency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>iot-2/evt/air/fmt/json</td>
+              <td>iot-2/type/+/id/+/evt/air/fmt/json</td>
+              <td>Object Temperature, Ambient Temperature, Humidity, and Barometric Pressure</td>
+              <td>Every 5 seconds</td>
+            </tr>
+            <tr>
+              <td>iot-2/evt/click/fmt/json</td>
+              <td>iot-2/type/+/id/+/evt/click/fmt/json</td>
+              <td>Left or Right Click</td>
+              <td>On Click</td>
+            </tr>
+            <tr>
+              <td>iot-2/evt/mag/fmt/json</td>
+              <td>iot-2/type/+/id/+/evt/mag/fmt/json</td>
+              <td>Magnetometer</td>
+              <td>On Change</td>
+            </tr>
+            <tr>
+              <td>iot-2/evt/accel/fmt/json</td>
+              <td>iot-2/type/+/id/+/evt/accel/fmt/json</td>
+              <td>Accelerometer</td>
+              <td>On Change</td>
+            </tr>
+            <tr>
+              <td>iot-2/evt/gyro/fmt/json</td>
+              <td>iot-2/type/+/id/+/evt/gyro/fmt/json</td>
+              <td>Gyroscope</td>
+              <td>On Change</td>
+            </tr>
+          </tbody>
+        </table>
+      </p>
+
+      <hr>
+
+      <footer>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  </body>
+</html>

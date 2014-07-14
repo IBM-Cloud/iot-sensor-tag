@@ -1,0 +1,11 @@
+{
+   "author": "IBM",
+   "dependencies": {
+      "sensortag":"*",
+      "mqtt":"*",
+      "getmac":"*",
+      "properties":"*"
+   },
+   "description": "Published data to the IoT cloud.",
+   "main": "sensor-tag.js"
+}

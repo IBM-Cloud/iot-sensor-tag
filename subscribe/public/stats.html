@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<!--
+ * Copyright IBM Corp. 2014
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html>
+  <head>
+    <title>IBM Internet of Things</title>
+    <meta name="viewport" content="width=device-width, width=device-height, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <style>
+      .ambientline {
+        stroke: darkblue;			/* the line colour for paths is steelblue */
+        stroke-width: 2;			/* the line width for paths is 2 pixels */
+        fill: none;
+      }
+      .objectline {
+        stroke: maroon;			/* the line colour for paths is steelblue */
+        stroke-width: 2;			/* the line width for paths is 2 pixels */
+        fill: none;
+      }
+      .axis path,
+      .axis line {
+        fill: none;					/* don't fill areas bounded by the axis line */
+        stroke: grey;				/* make the axis line grey */
+        stroke-width: 1;			/* make the width of the axis lines 1 pixel */
+        shape-rendering: crispEdges;/* make the edges sharp */
+      }
+      .grid .tick {
+        stroke: lightgrey;
+        opacity: 0.7;
+      }
+      .grid path {
+        stroke-width: 0;
+      }
+    </style>
+  </head>
+  <body data-offset='80'>
+    <!--Navigation bar-->		
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-inner">
+          <div class="navbar-header">
+            <a class="navbar-brand">IBM Bluemix And IoT Demo</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class="container marketing" style="margin-top:60px">
+
+      <!-- UUID INPUT -->	
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="input-group">
+            <input id="uuid" type="text" class="form-control" placeholder="Quickstart Device ID">
+            <span class="input-group-btn">
+              <button id="uuidConfirm" class="btn btn-default" type="button" onclick="connectOnClick()">Connect</button>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <center>
+        <h1 style="text-align:center">Temperature</h1>
+        <div id="temperatureGraph">
+        </div>
+        <code id="ambientTempPayload"></code>
+        <br>
+        <code id="objectTempPayload"></code>
+      </center>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-4">
+        <center>
+          <div id="accelerometerGraph" style="margin-top:40px">
+            <h1 style="text-align:center">Accelerometer</h1>
+            <!--<canvas id="accelerometerCanvas" width=600 height=400></canvas-->
+          </div>
+          <code id="accelerometerPayload"></code>
+        </center>
+      </div>
+      <div class="col-lg-4">
+        <center>
+          <div id="magnetometerGraph" style="margin-top:40px">
+            <h1 style="text-align:center">Magnetometer</h1>
+          </div>
+          <code id="magnetometerPayload"></code>
+        </center>
+      </div>
+      <div class="col-lg-4">
+        <center>
+          <div id="gyroscopeGraph" style="margin-top:40px">
+            <h1 style="text-align:center">Gyroscope</h1>
+          </div>
+          <code id="gyroscopePayload"></code>
+        </center>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <center>
+          <div id="barometerGraph" style="margin-top:40px">
+            <h1 style="text-align:center">Barometer: <span class="headerValue"><span id="barometerValue">n/a</span> mb</span></h1>
+            <code id="barometerPayload"></code>
+          </div>
+        </center>
+      </div>
+      <div class="col-lg-6">
+        <center>
+          <div id="humidityGraph" style="margin-top:40px">
+            <h1 style="text-align:center">Humidity: <span class="headerValue"><span id="humidityValue">n/a</span> %</span></h1>
+            <code id="humidityPayload"></code>
+          </div>
+        </center>
+      </div>
+    </div>
+    <!-- FOOTER -->
+    <hr>
+    <footer>
+    </footer>
+
+    <script src="http://d3js.org/d3.v2.min.js"></script>
+    <script src="http://threejs.org/build/three.min.js"></script>
+    <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="http://cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="http://cdn.sockjs.org/websocket-multiplex-0.1.js"></script>
+    <script type="text/javascript" src="js/stats.js"></script>
+  </body>	
+</html>

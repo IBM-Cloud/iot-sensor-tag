@@ -1,0 +1,78 @@
+<!doctype html>
+<!--
+ * Copyright IBM Corp. 2014
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Sensor Tag Presentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="reveal/css/reveal.min.css">
+    <link rel="stylesheet" href="reveal/css/theme/default.css" id="theme">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>TI Sensor Tag</h2>
+          <input id="uuid" type="text" placeholder="Quickstart Device ID">
+          <span id="connectBtn">
+            <button id="uuidConfirm"type="button" onclick="connectOnClick()">Connect</button>
+          </span>
+        </section>
+        <section>
+          <iframe data-autoplay width="420" height="345" src="http://www.youtube.com/embed/l3RQZ4mcr1c"></iframe>
+        </section>
+        <section>
+          <h2>Empty Slide</h2>
+        </section>
+      </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
+    <script src="reveal/js/reveal.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="//cdn.sockjs.org/sockjs-0.3.min.js"></script>
+    <script src="//cdn.sockjs.org/websocket-multiplex-0.1.js"></script>
+    <script>
+      Reveal.initialize({
+        transition: 'linear'
+      });
+      var sockjs_url = '/sensortag';
+      var sockjs = new SockJS(sockjs_url);
+
+      var multiplexer = new WebSocketMultiplex(sockjs);
+      var click  = multiplexer.channel('click');
+      click.onopen = function() {
+        console.log("click open");
+      };
+      click.onmessage = function(e) {
+        var data = jQuery.parseJSON(e.data);
+        if(data.d.left && !data.d.right) {
+  	      Reveal.left();
+        }
+        if(data.d.right && !data.d.left) {
+  	      Reveal.right();
+        }
+      };
+      function connectOnClick() {
+        var uuid = $('#uuid').val();
+        var data = JSON.stringify({"deviceId": uuid});
+        click.send(data);
+        $('#connectBtn').hide();
+        $('#uuid').hide();
+      }
+    </script>
+  </body>
+</html>
