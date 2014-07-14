@@ -1,7 +1,7 @@
 ## Sensor Tag IoT Cloud
 
 ## About
-This Node.js app allows you to connect to a [TI Sensor Tag]((http://www.ti.com/tool/cc2541dk-sensor), retrieve 
+This Node.js app allows you to connect to a [TI Sensor Tag](http://www.ti.com/tool/cc2541dk-sensor), retrieve 
 data from its sensors, and publish that data to the [IBM IoT Cloud](https://internetofthings.ibmcloud.com/#/).  
 You can run this application on a device like a Rasberry PI, Beaglebone Black,
 Mac, or PC, basically anything that supports the Node.js runtime and Bluetooth LE.
@@ -83,48 +83,15 @@ something like this
  The table below describes the topics published, which data is being published to those topics, and how frequently
  the data is being published.  You can then subscribe to these topics from you own applications.
 
-         <table class="table">
-          <thead>
-            <tr>
-              <th>Publish Topic</th>
-              <th>Subscription Topic</th>
-              <th>Values</th>
-              <th>Frequency</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>iot-2/evt/air/fmt/json</td>
-              <td>iot-2/type/+/id/+/evt/air/fmt/json</td>
-              <td>Object Temperature, Ambient Temperature, Humidity, and Barometric Pressure</td>
-              <td>Every 5 seconds</td>
-            </tr>
-            <tr>
-              <td>iot-2/evt/click/fmt/json</td>
-              <td>iot-2/type/+/id/+/evt/click/fmt/json</td>
-              <td>Left or Right Click</td>
-              <td>On Click</td>
-            </tr>
-            <tr>
-              <td>iot-2/evt/mag/fmt/json</td>
-              <td>iot-2/type/+/id/+/evt/mag/fmt/json</td>
-              <td>Magnetometer</td>
-              <td>On Change</td>
-            </tr>
-            <tr>
-              <td>iot-2/evt/accel/fmt/json</td>
-              <td>iot-2/type/+/id/+/evt/accel/fmt/json</td>
-              <td>Accelerometer</td>
-              <td>On Change</td>
-            </tr>
-            <tr>
-              <td>iot-2/evt/gyro/fmt/json</td>
-              <td>iot-2/type/+/id/+/evt/gyro/fmt/json</td>
-              <td>Gyroscope</td>
-              <td>On Change</td>
-            </tr>
-          </tbody>
-        </table>
+| Publish Topic              | Subscription Topic                   | Values                                    | Frequency       | 
+|----------------------------|--------------------------------------|-------------------------------------------|-----------------|
+| iot-2/evt/air/fmt/json     | iot-2/type/+/id/+/evt/air/fmt/json   | Object Temperature, Ambient Temperature,  | Every 5 seconds |
+|                            |                                      | Humidity, and Barometric Pressure         |                 |
+| iot-2/evt/click/fmt/json   | iot-2/type/+/id/+/evt/click/fmt/json | Left or Right Click                       | On Click        |
+| iot-2/evt/mag/fmt/json     | iot-2/type/+/id/+/evt/mag/fmt/json   | Magnetometer                              | On Change       |
+| iot-2/evt/accel/fmt/json   | iot-2/type/+/id/+/evt/accel/fmt/json | Accelerometer                             | On Change       |
+| iot-2/evt/gyro/fmt/json    | iot-2/type/+/id/+/evt/gyro/fmt/json  | Gyroscope                                 | On Change       |
+
 
 ## Confirming Data Is Being Published
 To confirm that data is being published to the IoT Cloud you can use a Node-RED app in Bluemix.  To do this follow
