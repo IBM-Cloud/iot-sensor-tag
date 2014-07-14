@@ -19,29 +19,34 @@
     <meta charset="utf-8">
     <title>Sensor Tag Presentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="reveal/css/reveal.min.css">
-    <link rel="stylesheet" href="reveal/css/theme/default.css" id="theme">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.6.2/css/reveal.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/reveal.js/2.6.2/css/theme/default.css" id="theme">
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
         <section>
           <h2>TI Sensor Tag</h2>
-          <input id="uuid" type="text" placeholder="Quickstart Device ID">
+          <ul>
+            <li>Enter the Device ID below and click Connect</li>
+            <li>Use the right button on the Sensor Tag to go to the next slide</li>
+            <li>Use the left button on the Sensor Tag to go to the previous slide</li>
+          </ul>
+          <input id="uuid" type="text" placeholder="Device ID">
           <span id="connectBtn">
             <button id="uuidConfirm"type="button" onclick="connectOnClick()">Connect</button>
           </span>
         </section>
         <section>
-          <iframe data-autoplay width="420" height="345" src="http://www.youtube.com/embed/l3RQZ4mcr1c"></iframe>
+          <h1>Hurray Internet Of Things!!!!</h1>
         </section>
         <section>
-          <h2>Empty Slide</h2>
+          <h2>The End</h2>
         </section>
       </div>
     </div>
     <script src="//cdnjs.cloudflare.com/ajax/libs/headjs/0.96/head.min.js"></script>
-    <script src="reveal/js/reveal.min.js"></script>
+    <script src="//cdn.jsdelivr.net/reveal.js/2.6.2/js/reveal.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="//cdn.sockjs.org/sockjs-0.3.min.js"></script>
     <script src="//cdn.sockjs.org/websocket-multiplex-0.1.js"></script>
