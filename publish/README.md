@@ -85,8 +85,7 @@ something like this
 
 | Publish Topic              | Subscription Topic                   | Values                                    | Frequency       | 
 |----------------------------|--------------------------------------|-------------------------------------------|-----------------|
-| iot-2/evt/air/fmt/json     | iot-2/type/+/id/+/evt/air/fmt/json   | Object Temperature, Ambient Temperature,  | Every 5 seconds |
-|                            |                                      | Humidity, and Barometric Pressure         |                 |
+| iot-2/evt/air/fmt/json     | iot-2/type/+/id/+/evt/air/fmt/json   | Object Temperature, Ambient Temperature, Humidity, and Barometric Pressure  | Every 5 seconds |
 | iot-2/evt/click/fmt/json   | iot-2/type/+/id/+/evt/click/fmt/json | Left or Right Click                       | On Click        |
 | iot-2/evt/mag/fmt/json     | iot-2/type/+/id/+/evt/mag/fmt/json   | Magnetometer                              | On Change       |
 | iot-2/evt/accel/fmt/json   | iot-2/type/+/id/+/evt/accel/fmt/json | Accelerometer                             | On Change       |
