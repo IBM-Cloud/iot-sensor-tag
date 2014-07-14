@@ -1,18 +1,19 @@
 ## Sensor Tag IoT Cloud
 
 ## About
-This Node.js app allows you to connect to a [TI Sensor Tag](), retreive data from its sensors, and publish that
-data to the [IBM IoT Cloud]().  You can run this application on a device like a Rasberry PI, Beaglebone Black,
+This Node.js app allows you to connect to a [TI Sensor Tag]((http://www.ti.com/tool/cc2541dk-sensor), retrieve 
+data from its sensors, and publish that data to the [IBM IoT Cloud](https://internetofthings.ibmcloud.com/#/).  
+You can run this application on a device like a Rasberry PI, Beaglebone Black,
 Mac, or PC, basically anything that supports the Node.js runtime and Bluetooth LE.
 
 ## Getting The Code
 Just clone the repository.
 
-    $ git clone 
+    $ git clone git@github.com:IBM-Bluemix/iot-sensor-tag.git
 
 ## Prerequisites
 Since this Node app uses the IBM IoT Cloud you must signup for an account and register the device that will be 
-publishing the data.  To signup for the IBM IoT Cloud click [here]().
+publishing the data.  To signup for the IBM IoT Cloud click [here](https://internetofthings.ibmcloud.com/#/).
 
 To register a device, do the following.
 
