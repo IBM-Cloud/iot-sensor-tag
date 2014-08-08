@@ -42,7 +42,7 @@ properties.parse('./config.properties', {path: true}, function(err, cfg) {
       {
         "clientId" : clientId,
         "keepalive" : 30,
-        "username" : "use-auth-token",
+        "username" : "use-token-auth",
         "password" : cfg['auth-token']
       });
     client.on('connect', function() {
