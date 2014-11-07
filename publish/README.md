@@ -12,10 +12,17 @@ Just clone the repository.
     $ git clone git@github.com:IBM-Bluemix/iot-sensor-tag.git
 
 ## Prerequisites
-Since this Node app uses the IBM IoT Cloud you must [signup for an account](https://internetofthings.ibmcloud.com/#/) 
-and register the device that will be publishing the data.
+Since this Node app uses the IBM IoT Cloud you must create an IoT service in Bluemix in order
+to create an organization and register devices.  To create an IoT service
 
-After you register for the IoT Cloud beta you can follow the below steps to register a device.
+1.  Log into bluemix.net.
+2.  Go to the catalog and create an new IoT service.  Give the service the name
+    iot-sensor-tag.
+3.  In the App dropdown select "Leave Unbound".
+
+After you create a new IoT service you will need to launch the dashboard to register a device.  In the Dashboard
+in Bluemix, select the IoT service you just created and click Launch to launch the IoT dashboard.  Follow the
+the steps below to register your device.
 
 1.  Click the Devices tab
 2.  Click Add Device

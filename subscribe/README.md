@@ -24,21 +24,28 @@ is sending data so the code on the server knows which device to listen for data 
 ## Running The Code
 
 ### Prerequisites
-Before you run this code you will need an API Key and Auth Token.  To get an API Key and Auth Token you need
-to sign up for the IoT Cloud beta.  You should have already done this when setting up your device to publish
-the Sensor Tag data, however if you still need to register you can do so [here](https://internetofthings.ibmcloud.com/#/).
-After you have registered you will need to login and head to the dashboard.  On the dashboard click the 
-API Keys tab.  Then click the Add API Key link.  This will bring up a dialog with an API Key and Auth
-Token.  Copy these values and save them somewhere, once you close the dialog it will not be possible to 
-retrieve them.
+
+Since this Node app uses the IBM IoT Cloud you must create an IoT service in Bluemix in order
+to create an organization and register applications.  To create an IoT service
+
+1.  Log into bluemix.net.
+2.  Go to the catalog and select the Internet of Things service.  
+3.  Give the service the name iot-sensor-tag.
+4.  In the App dropdown select "Leave Unbound".
+5.  Click Create.
+
 
 ### Locally
 You can run this code locally on your dev machine if you want.  Before doing this you will need to create a file
-named config.properties in the subscribe directory.  Inside this file you should add two properties one for the API Key
-and one for the Auth Token.  For example
+named config.properties in the subscribe directory.  Inside this file you should add two properties one for the API Key and one for the Auth Token.  For example
 
     apikey=myapikey
     apitoken=myapitoken
+
+To get an API Key and Token select the IoT service in your Bluemix dashboard and click Launch to launch
+the IoT dashboard.  On the dashboard click the 
+API Keys tab.  Then click the Add API Key link.  This will bring up a dialog with an API Key and Auth
+Token.  Copy these values to your config.properties and save the file.
 
 After you have added the config.properties file run the following commands in a terminal window from the subscribe
 directory.
@@ -50,9 +57,7 @@ Open your favorite browser and go to [http://localhost:9999](http://localhost:99
 
 ### Bluemix
 To deploy the code to Bluemix you will need to have an internet of things service within the space you are
-deploying the application called iot-sensor-tag.  Go to the Bluemix catalog and select the 
-internet of things service.  Leave the service unbound (do not bind it to an app) and change the name to 
-iot-sensor-tag.  Enter the API Key and API Token you got from the IoT Cloud and click Create.
+deploying the application called iot-sensor-tag.  This should have been done in the Prerequisites section.
 
 Now from within the subscribe directory deploy the application using the provided manifest.  You will want to
 change the name of the application in the manifest before deploying to avoid any conflicts.  Then from

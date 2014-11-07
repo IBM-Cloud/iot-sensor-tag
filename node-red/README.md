@@ -3,7 +3,7 @@ This directory contains an exported Node-RED flow that you can import into a Nod
 on Bluemix to see the data being published from the TI Sensor Tag to the IoT Cloud.
 
 ## Importing The Flow
-1.  Follow the instructions in [this IoT recipe](https://developer.ibm.com/iot/recipes/node-red-registered-application/) 
+1.  Follow the instructions in [this IoT recipe](https://www.ng.bluemix.net/docs/#services/IoT/index.html#iot180) 
 to setup and a Node-RED instance in Bluemix
 2.  Copy the content of node-red-flow.json to your clipboard
 3.  Open you Node-RED instance running on Bluemix and click the drop-down menu in the top
