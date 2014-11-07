@@ -70,7 +70,7 @@ function monitorSensorTag(client) {
 	  connected = true;
 	  console.log('Connected To Sensor Tag');
 	  device.discoverServicesAndCharacteristics(function(callback){
-	    getDeviceInfo();
+	    //getDeviceInfo();
 		initAirSensors();
 		initAccelAndGyro();
 		initKeys();

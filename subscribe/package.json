@@ -7,7 +7,7 @@
       "websocket-multiplex" : "0.1.x",
       "express":"*",
       "getmac":"*",
-      "cf-env": "*",
+      "cfenv": "*",
       "properties":"*"
    },
    "description": "Visualizes data from TI Sensor Tag through various demos.",

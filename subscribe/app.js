@@ -20,17 +20,17 @@ var mqtt = require('mqtt');
 var websocket_multiplex = require('websocket-multiplex');
 var path = require('path');
 var macUtil = require('getmac');
-var cfEnv = require('cf-env');
-var pkg   = require('./package.json');
+var cfenv = require('cfenv');
 var properties = require('properties');
 
 
-var cfCore = cfEnv.getCore({name: pkg.name});
-var instanceId = cfCore.app && cfCore.app != null ? cfCore.app.instance_id : undefined;
-var iotService = cfEnv.getService('iot-sensor-tag');
+var appEnv = cfenv.getAppEnv();
+var instanceId = !appEnv.isLocal ? appEnv.app.instance_id : undefined;
+var iotService = appEnv.getService('iot-sensor-tag');
 if(instanceId && iotService && iotService != null) {
   console.log('Instance Id: ' + instanceId);
-  start(instanceId, iotService.credentials.apiKey, iotService.credentials.apiToken);
+  start(instanceId, iotService.credentials.apiKey, iotService.credentials.apiToken,
+    iotService.credentials.mqtt_host, iotService.credentials.mqtt_s_port);
 } else {
   properties.parse('./config.properties', {path: true}, function(err, cfg) {
     if (err) {
@@ -42,15 +42,17 @@ if(instanceId && iotService && iotService != null) {
       if (err)  throw err;
       var deviceId = macAddress.replace(/:/gi, '');
       console.log("Device MAC Address: " + deviceId);
-      start(deviceId, cfg.apikey, cfg.apitoken);
+      var org = cfg.apikey.split('-')[1];
+      start(deviceId, cfg.apikey, cfg.apitoken, org + '.messaging.internetofthings.ibmcloud.com', 
+        '8883');
     });
   });
 }
-function start(deviceId, apiKey, apiToken) {
-  var sockjs_opts = {sockjs_url: "http://cdn.sockjs.org/sockjs-0.3.min.js"};
-  var org = apiKey.split(':')[1];
+function start(deviceId, apiKey, apiToken, mqttHost, mqttPort) {
+  var sockjs_opts = {sockjs_url: "http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"};
+  var org = apiKey.split('-')[1];
   var clientId = ['a', org, deviceId].join(':');
-  var client = mqtt.createSecureClient('8883', org + '.messaging.internetofthings.ibmcloud.com', {
+  var client = mqtt.createSecureClient(mqttPort, mqttHost, {
               "clientId" : clientId,
               "keepalive" : 30,
               "username" : apiKey,
@@ -60,7 +62,7 @@ function start(deviceId, apiKey, apiToken) {
     console.log('MQTT client connected to IBM IoT Cloud.');
   });
   client.on('error', function(err) {
-    console.log('client error' + err);
+    console.error('client error' + err);
     process.exit(1);
   });
   client.on('close', function() {
