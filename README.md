@@ -2,13 +2,9 @@
 This repo contains the code needed to connect to [IBM's IoT Cloud](https://internetofthings.ibmcloud.com/#/) 
 and publish and retrieve data from a [Texas Instruments Sensor Tag](http://www.ti.com/tool/cc2541dk-sensor).
 
-For a demonstration of the applications within this repo you can watch the following 2 videos
+For a demonstration of the applications within this repo you can watch the following video
 
-### Short Version
-[![Short Version](https://i1.ytimg.com/vi/UubP2ld5AqE/0.jpg?v=53c552d1)](https://www.youtube.com/watch?v=UubP2ld5AqE)
-
-### Long Version
-[![Long Version](https://i1.ytimg.com/vi/u7VulZiGjU0/0.jpg?v=53c552d1)](https://www.youtube.com/watch?v=u7VulZiGjU0)
+[![Demo](https://i.ytimg.com/vi/lZuq85EJGWo/2.jpg?time=1415806820552)](http://youtu.be/lZuq85EJGWo)
 
 The [publish directory](https://github.com/IBM-Bluemix/iot-sensor-tag/tree/master/publish) contains a Node.js application 
 that can be placed on any device connected to the internet and is capable of using Bluetooth low-energy 
@@ -28,6 +24,17 @@ which you can import into your Node-RED instance of Bluemix to see the data bein
 Here is a diagram that describes how the apps work with the IBM IoT Cloud and Bluemix.
 
 <img src="subscribe/public/sensor-tag.jpg"/>
+
+## Other Videos
+
+Some of the content in these videos is outdated due to changes in Bluemix, but most
+of the content may still be relevant.
+
+### Short Version
+[![Short Version](https://i1.ytimg.com/vi/UubP2ld5AqE/0.jpg?v=53c552d1)](https://www.youtube.com/watch?v=UubP2ld5AqE)
+
+### Long Version
+[![Long Version](https://i1.ytimg.com/vi/u7VulZiGjU0/0.jpg?v=53c552d1)](https://www.youtube.com/watch?v=u7VulZiGjU0)
 
 ## License
 This code is licensed under Apache v2.  See the LICENSE file in the root of
