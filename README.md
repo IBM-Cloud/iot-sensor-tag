@@ -4,7 +4,7 @@ and publish and retrieve data from a [Texas Instruments Sensor Tag](http://www.t
 
 For a demonstration of the applications within this repo you can watch the following video
 
-[![Demo](https://i.ytimg.com/vi/lZuq85EJGWo/2.jpg?time=1415806820552)](http://youtu.be/lZuq85EJGWo)
+[![Demo](https://i.ytimg.com/vi/lZuq85EJGWo/0.jpg?time=1415806820552)](http://youtu.be/lZuq85EJGWo)
 
 The [publish directory](https://github.com/IBM-Bluemix/iot-sensor-tag/tree/master/publish) contains a Node.js application 
 that can be placed on any device connected to the internet and is capable of using Bluetooth low-energy 
