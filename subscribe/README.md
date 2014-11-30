@@ -59,8 +59,8 @@ Open your favorite browser and go to [http://localhost:9999](http://localhost:99
 To deploy the code to Bluemix you will need to have an internet of things service within the space you are
 deploying the application called iot-sensor-tag.  This should have been done in the Prerequisites section.
 
-Now from within the subscribe directory deploy the application using the provided manifest.  You will want to
-change the name of the application in the manifest before deploying to avoid any conflicts.  Then from
+Now from within the subscribe directory deploy the application using the provided manifest.
+Then from
 within the subscribe directory run the following command.
 
     $ cf push

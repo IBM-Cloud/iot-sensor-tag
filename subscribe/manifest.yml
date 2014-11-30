@@ -17,7 +17,7 @@
 applications:
 - name: sensor-tag-demos
   memory: 128M
-  host: sensor-tag-demos
+  host: sensor-tag-demos-${random-word}
   domain: mybluemix.net
   command: node app.js
   services:
