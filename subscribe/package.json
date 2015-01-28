@@ -1,7 +1,7 @@
 {
    "author": "IBM",
    "dependencies": {
-      "mqtt":"0.3.12",
+      "mqtt":"1.0.5",
       "sockjs":"0.3.9",
       "http":"0.0.0",
       "websocket-multiplex" : "0.1.x",

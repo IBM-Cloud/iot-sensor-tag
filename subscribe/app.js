@@ -52,7 +52,7 @@ function start(deviceId, apiKey, apiToken, mqttHost, mqttPort) {
   var sockjs_opts = {sockjs_url: "http://cdnjs.cloudflare.com/ajax/libs/three.js/r67/three.js"};
   var org = apiKey.split('-')[1];
   var clientId = ['a', org, deviceId].join(':');
-  var client = mqtt.createSecureClient(mqttPort, mqttHost, {
+  var client = mqtt.connect("mqtts://" + mqttHost + ":" + mqttPort, {
               "clientId" : clientId,
               "keepalive" : 30,
               "username" : apiKey,

@@ -38,7 +38,7 @@ properties.parse('./config.properties', {path: true}, function(err, cfg) {
 
     var clientId = ['d', cfg.org, cfg.type, cfg.id].join(':');
 
-    var client = mqtt.createSecureClient('8883', cfg.org + '.messaging.internetofthings.ibmcloud.com', 
+    var client = mqtt.connect("mqtts://" + cfg.org + '.messaging.internetofthings.ibmcloud.com:8883', 
       {
         "clientId" : clientId,
         "keepalive" : 30,
