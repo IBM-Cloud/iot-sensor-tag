@@ -1,14 +1,14 @@
 {
    "author": "IBM",
    "dependencies": {
-      "mqtt":"*",
-      "sockjs":"*",
-      "http":"*",
+      "mqtt":"0.3.12",
+      "sockjs":"0.3.9",
+      "http":"0.0.0",
       "websocket-multiplex" : "0.1.x",
-      "express":"*",
-      "getmac":"*",
-      "cfenv": "*",
-      "properties":"*"
+      "express":"4.5.1",
+      "getmac":"1.0.6",
+      "cfenv": "1.0.0",
+      "properties":"1.2.1"
    },
    "description": "Visualizes data from TI Sensor Tag through various demos.",
    "license": "IBM",
