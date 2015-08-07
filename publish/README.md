@@ -32,8 +32,17 @@ the steps below to register your device.
 
 After clicking Continue you will be brought to a page containing some properties for the device you registered.
 Copy the properties into a file called config.properties in the publish directory of this repo.
-Make sure you do this before you leave this page, you will not be able to retrieve these properties after you leave the 
-page.
+Make sure you do this before you leave this page, you will not be able to retrieve these properties after you leave the page.
+
+config.properties example - provide your own ids, tokens etc:
+
+```
+auth-token=kh5gyJ?spG73CnJOVH
+id=a5e85437d5ea
+type=TISensorTag
+org=orgorg
+auth-method=token
+```
 
 ### If You Are Using OSX
 Newer Macs should support Bluetooth LE.  If you Mac supports Bluetooth 4.0 then chances are it supports Bluetooth
