@@ -36,11 +36,13 @@ Make sure you do this before you leave this page, you will not be able to retrie
 
 config.properties example - provide your own ids, tokens etc:
 
+```
 auth-token=kh5gyJ?spG73CnJOVH
 id=a5e85437d5ea
 type=TISensorTag
 org=orgorg
 auth-method=token
+```
 
 ### If You Are Using OSX
 Newer Macs should support Bluetooth LE.  If you Mac supports Bluetooth 4.0 then chances are it supports Bluetooth
