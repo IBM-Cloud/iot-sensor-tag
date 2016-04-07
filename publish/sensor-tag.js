@@ -202,26 +202,26 @@ function monitorSensorTag(client) {
 		  	clearInterval(intervalId);
 		  	return;
 		  }
-		  sensorTag.readLuxometer(function(lux) {
-		  device.readBarometricPressure(function(pressure) {
-		  	device.readHumidity(function(temperature, humidity) {
-		  	  device.readIrTemperature(function(objectTemperature, ambientTemperature) {
-		  	  	var data = {
-                   "d": {
-                     "myName": "TI Sensor Tag",
-                     "pressure" : pressure,
-                     "humidity" : humidity,
-                     "objTemp" : objectTemperature,
-                     "ambientTemp" : ambientTemperature,
-                     "temp" : temperature,
-                     "lux" : lux
-                    }
-                  };
-                client.publish('iot-2/evt/air/fmt/json', JSON.stringify(data), function() {
-                });
-		  	  });
-		  	});
-		  });
+		  device.readLuxometer(function(lux) {
+			  device.readBarometricPressure(function(pressure) {
+				device.readHumidity(function(temperature, humidity) {
+				  device.readIrTemperature(function(objectTemperature, ambientTemperature) {
+					var data = {
+					   "d": {
+						 "myName": "TI Sensor Tag",
+						 "pressure" : pressure,
+						 "humidity" : humidity,
+						 "objTemp" : objectTemperature,
+						 "ambientTemp" : ambientTemperature,
+						 "temp" : temperature,
+						 "lux" : lux
+						}
+					  };
+					client.publish('iot-2/evt/air/fmt/json', JSON.stringify(data), function() {
+					});
+				  });
+				});
+			  });
 		  });
 		}, 5000);
 	}
