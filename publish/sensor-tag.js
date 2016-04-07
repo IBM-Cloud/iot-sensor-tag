@@ -193,31 +193,35 @@ function monitorSensorTag(client) {
 	});
 
 	function initAirSensors() {
-		device.enableIrTemperature();
-		device.enableHumidity();
-		device.enableBarometricPressure();
+		device.enableIrTemperature(function(err) {if (err) throw err;});
+		device.enableHumidity(function(err) {if (err) throw err;});
+		device.enableBarometricPressure(function(err) {if (err) throw err;});
+		device.enableLuxometer(function(err) {if (err) throw err;});
 		var intervalId = setInterval(function() {
 		  if(!connected) {
 		  	clearInterval(intervalId);
 		  	return;
 		  }
-		  device.readBarometricPressure(function(pressure) {
-		  	device.readHumidity(function(temperature, humidity) {
-		  	  device.readIrTemperature(function(objectTemperature, ambientTemperature) {
-		  	  	var data = {
-                   "d": {
-                     "myName": "TI Sensor Tag",
-                     "pressure" : pressure,
-                     "humidity" : humidity,
-                     "objTemp" : objectTemperature,
-                     "ambientTemp" : ambientTemperature,
-                     "temp" : temperature
-                    }
-                  };
-                client.publish('iot-2/evt/air/fmt/json', JSON.stringify(data), function() {
-                });
-		  	  });
-		  	});
+		  device.readLuxometer(function(error, lux) {
+			  device.readBarometricPressure(function(error, pressure) {
+				device.readHumidity(function(error, temperature, humidity) {
+				  device.readIrTemperature(function(error, objectTemperature, ambientTemperature) {
+					var data = {
+					   "d": {
+						 "myName": "TI Sensor Tag",
+						 "pressure" : pressure,
+						 "humidity" : humidity,
+						 "objTemp" : objectTemperature,
+						 "ambientTemp" : ambientTemperature,
+						 "temp" : temperature,
+						 "lux" : lux
+						}
+					  };
+					client.publish('iot-2/evt/air/fmt/json', JSON.stringify(data), function() {
+					});
+				  });
+				});
+			  });
 		  });
 		}, 5000);
 	}

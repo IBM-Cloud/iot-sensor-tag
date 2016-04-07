@@ -1,7 +1,7 @@
 {
    "author": "IBM",
    "dependencies": {
-      "sensortag":"1.0.2",
+      "sensortag":"1.2.2",
       "mqtt":"1.3.5",
       "getmac":"1.0.7",
       "properties":"1.2.1"
