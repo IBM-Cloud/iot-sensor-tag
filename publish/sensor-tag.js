@@ -196,11 +196,13 @@ function monitorSensorTag(client) {
 		device.enableIrTemperature();
 		device.enableHumidity();
 		device.enableBarometricPressure();
+		device.enableLuxometer();
 		var intervalId = setInterval(function() {
 		  if(!connected) {
 		  	clearInterval(intervalId);
 		  	return;
 		  }
+		  sensorTag.readLuxometer(function(lux) {
 		  device.readBarometricPressure(function(pressure) {
 		  	device.readHumidity(function(temperature, humidity) {
 		  	  device.readIrTemperature(function(objectTemperature, ambientTemperature) {
@@ -211,13 +213,15 @@ function monitorSensorTag(client) {
                      "humidity" : humidity,
                      "objTemp" : objectTemperature,
                      "ambientTemp" : ambientTemperature,
-                     "temp" : temperature
+                     "temp" : temperature,
+                     "lux" : lux
                     }
                   };
                 client.publish('iot-2/evt/air/fmt/json', JSON.stringify(data), function() {
                 });
 		  	  });
 		  	});
+		  });
 		  });
 		}, 5000);
 	}
